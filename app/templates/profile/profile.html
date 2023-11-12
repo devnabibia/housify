@@ -1,0 +1,148 @@
+{% extends 'base.html'%}
+{% block navbar %}
+
+    {% include 'navbar2.html' %}
+
+{% endblock %}
+{% import 'bootstrap/wtf.html' as wtf%}
+{% block content %}
+
+
+<div class="container">
+    <div class="row about">
+        <div class="col-md-4 picture">
+            <!-- Displaying profile photo -->
+            {% if user.profile_pic_path %}
+                <img src="{{url_for('static',filename = user.profile_pic_path)}}" alt="" class="img-thumbnail rounded-circle">
+            {% else %}
+                <img src="{{url_for('static',filename = 'photos/avatar.jpg')}}" alt="" class="img-thumbnail rounded-circle">
+            {% endif %}
+
+
+            {% if user == current_user %}
+            <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype="multipart/form-data">
+                <input type="file" name="photo" class="form-control picture" required >
+                <input type="submit" name="submit" value="Upload Picture">
+            </form>
+            {% endif %}
+
+            <h3 class="user-tag"> {{user.username|capitalize}} </h3>
+            <hr>
+            {% if user.bio %}
+                <p> {{user.bio}} </p>
+            {% else %}
+                <p>{{user.username|capitalize}} has no bio</p>
+            {% endif %}
+            {% if user == current_user %}
+            <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit Bio</a>
+            <br>
+            {% endif %}
+            <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#bookingModal">View Bookings</button>
+
+                <div class="modal fade" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="bookingModalLabel" aria-hidden="true">
+                  <div class="modal-dialog booked" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header ">
+                        <h5 class="modal-title" id="bookingModalLabel">Booked Views</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <table class="table table-striped">
+                           <thead>
+                               <tr>
+
+
+                                    <th scope='col'>Name</th>
+                                    <th scope='col'>Email</th>
+                                    <th scope='col'>Contact</th>
+                                    <th scope='col'>Date</th>
+                                    <th scope='col'>Start Time</th>
+                                    <th scope='col'>End Time</th>
+                                    <th scope='col'>Listed House</th>
+                            </tr>
+                           </thead>
+                           <tbody>
+
+                               {% if bookings%}
+                                {% for booking in bookings%}
+
+                                <tr>
+                                    <td>{{booking.name}}</td>
+                                    <td>{{booking.email}}</td>
+                                    <td>{{booking.contact}}</td>
+                                    <td>{{booking.timeslot.date}}</td>
+                                    <td>{{booking.timeslot.start_time}}</td>
+                                    <td>{{booking.timeslot.end_time}}</td>
+                                    <td>{{booking.listing.title}}</td>
+
+                                </tr>
+
+
+                                {% endfor%}
+
+
+                               {% else %}
+                               Display me
+                               {% endif %}
+
+
+
+
+                           </tbody>
+                       </table>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Print Bookings</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+        </div>
+        <div class="offset-1 col-md-7  listings">
+            {% if listings%}
+
+
+                <div class="container-fluid">
+                    <div class="row">
+                    {% for list in listings %}
+                    <div class="container-fluid list">
+                        <div class="row">
+
+
+                        <div class="col-md-4">
+                            {% if list.featured_pic_path %}
+                                <img class="card-img-top" src="{{url_for('static',filename = list.featured_pic_path)}}" alt="Image of ">
+                            {% else %}
+                                <img src="{{url_for('static',filename = 'photos/myhouse.png')}}" alt="" class="card-img-top" style="height:220px">
+                            {% endif %}
+                            <!-- <img src="{{url_for('static',filename = 'images/1.jpg')}}" class="img-thumbnail"alt=""> -->
+                        </div>
+                        <div class="col-md-8">
+
+
+
+                        <h4 class="card-title">{{list.title}}</h4>
+                        <hr>
+                        <p class="metadata">Located in {{list.location}} <small class="text-muted">{{list.category}} | {{list.bedrooms}}</small></p>
+
+
+
+                    </div>
+                    </div>
+                    </div>
+
+                    {% endfor %}
+                    </div>
+                </div>
+                {% else %}
+                Display me
+                {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

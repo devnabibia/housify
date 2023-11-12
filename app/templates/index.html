@@ -1,0 +1,351 @@
+{% extends 'base.html' %}
+<!-- Navbar block -->
+{% block navbar %}
+
+    {% include 'navbar.html' %}
+
+{% endblock %}
+{% import 'macros.html' as macro %}
+<!-- Content block -->
+{% block content %}
+    <title> {{ title }} </title>
+    <div class="container-fluid">
+
+
+    <div class="landing">
+
+        <div class="landing-page">
+            <div class="cover">
+            <div class="title">
+                    <h2>PROPERTIES FOR RENT</h2>
+                    <p>Want to rent a house or property? Book a viewing now</p>
+                </div>
+
+
+                <nav class="categories">
+                  <div class="nav nav-tabs nav-justified category" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link cat active" id="all-listings-tab" data-toggle="tab" href="#all-listings" role="tab" aria-controls="all-listings" aria-selected="true">All Listings</a>
+                    <a class="nav-item nav-link cat" id="apartments-tab" data-toggle="tab" href="#apartments" role="tab" aria-controls="apartments" aria-selected="false">Apartments</a>
+                    <a class="nav-item nav-link cat" id="bangalows-tab" data-toggle="tab" href="#bangalows" role="tab" aria-controls="bangalows" aria-selected="false">Bungalows</a>
+                    <a class="nav-item nav-link cat" id="massionette-tab" data-toggle="tab" href="#massionette" role="tab" aria-controls="massionette" aria-selected="false">Massionettes</a>
+                  </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+  <!-- Dummy Data -->
+    <!-- <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="all-listings" role="tabpanel" aria-labelledby="all-listings">
+          ...Listings
+          <div class="container content">
+              <div class="row">
+                  <div class="col-sm-6 col-md-4 wrapper">
+                      <div class="text">
+                          <div class="card article">
+                              <a href="#" target="_blank">
+                                  <div class="hovereffect">
+                                      <img class="card-img-top " src="{{url_for('static',filename = 'images/1.jpg')}}" alt="Image of ">
+                                      <div class="overlay">
+                                          Book a viewing
+                                      </div>
+
+                                  </div>
+                              </a>
+                              <div class="card-body">
+                                  <h4 class="card-title">Listing Title for Plot 1</h4>
+
+                                  <hr>
+                                  <p class="metadata">Located in Donholm Area</p>
+                                  <p class="metadata">Priced at $1800 </p>
+                                  <p> <small class="text-muted"> Apartments | Bedrooms 2</small></p>
+                                  <a href="#" class= "btn btn-primary btn-sm">View Details</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6 col-md-4 wrapper">
+                    <div class="text">
+                        <div class="">
+                            <div class="card article">
+                                <a href="#" target="_blank">
+                                    <div class="hovereffect">
+                                        <img class="card-img-top " src="{{url_for('static',filename = 'images/2.jpg')}}" alt="Image of ">
+                                        <div class="overlay">
+                                            Book a viewing
+                                        </div>
+
+                                    </div>
+                                </a>
+                                <div class="card-body">
+                                    <h4 class="card-title">Listing Title for Plot 1</h4>
+                                    <hr>
+                                    <p class="metadata">Located in Donholm Area</p>
+                                    <p class="metadata">Priced at $1800 </p>
+                                    <p> <small class="text-muted"> Apartments | Bedrooms 2</small></p>
+                                    <a href="#" class= "btn btn-primary btn-sm">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 wrapper">
+                    <div class="text">
+                        <div class="card article">
+                            <a href="#" target="_blank">
+                                <div class="hovereffect">
+                                    <img class="card-img-top " src="{{url_for('static',filename = 'images/4.jpg')}}" alt="Image of ">
+                                    <div class="overlay">
+                                        Book a viewing
+                                    </div>
+
+                                </div>
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title">Listing Title for Plot 1</h4>
+                                <hr>
+                                <p class="metadata">Located in Donholm Area</p>
+                                <p class="metadata">Priced at $1800 </p>
+                                <p> <small class="text-muted"> Apartments | Bedrooms 2</small></p>
+                                <a href="#" class= "btn btn-primary btn-sm">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+      <div class="tab-pane fade" id="apartments" role="tabpanel" aria-labelledby="apartments">
+          ...Apartments
+          <div class="container content">
+             <div class="row">
+                <div class="col-sm-6 col-md-4 wrapper">
+                    <div class="text">
+                        <div class="card article">
+                            <a href="#" target="_blank">
+                                <img class="card-img-top" src="{{url_for('static',filename = 'images/2.jpg')}}" alt="Image of ">
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title">Listing description</h4>
+                                <p class="metadata">Agent</p>
+                                <p class="metadata">Location</p>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 wrapper">
+                    <div class="text">
+                        <div class="card article">
+                            <a href="#" target="_blank">
+                                <img class="card-img-top" src="{{url_for('static',filename = 'images/4.jpg')}}" alt="Image of ">
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title">Listing description</h4>
+                                <p class="metadata">Agent</p>
+                                <p class="metadata">Location</p>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 wrapper">
+                    <div class="text">
+                        <div class="card article">
+                            <a href="#" target="_blank">
+                                <img class="card-img-top" src="{{url_for('static',filename = 'images/1.jpg')}}" alt="Image of ">
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title">Listing description</h4>
+                                <p class="metadata">Agent</p>
+                                <p class="metadata">Location</p>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="bangalows" role="tabpanel" aria-labelledby="bangalows">
+          ...Banagalows
+          <div class="container content">
+             <div class="row">
+                <div class="col-sm-6 col-md-4 wrapper">
+                    <div class="text">
+
+                        <div class="">
+                            <div class="card article">
+                                <a href="#" target="_blank">
+                                    <img class="card-img-top" src="{{url_for('static',filename = 'images/4.jpg')}}" alt="Image of ">
+                                </a>
+                                <div class="card-body">
+                                    <h4 class="card-title">Listing description</h4>
+                                    <p class="metadata">Agent</p>
+                                    <p class="metadata">Location</p>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 wrapper">
+                    <div class="text">
+
+                        <div class="">
+                            <div class="card article">
+                                <a href="#" target="_blank">
+                                    <img class="card-img-top" src="{{url_for('static',filename = 'images/2.jpg')}}" alt="Image of ">
+                                </a>
+                                <div class="card-body">
+                                    <h4 class="card-title">Listing description</h4>
+                                    <p class="metadata">Agent</p>
+                                    <p class="metadata">Location</p>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 wrapper">
+                    <div class="text">
+
+                        <div class="">
+                            <div class="card article">
+                                <a href="#" target="_blank">
+                                    <img class="card-img-top" src="{{url_for('static',filename = 'images/1.jpg')}}" alt="Image of ">
+                                </a>
+                                <div class="card-body">
+                                    <h4 class="card-title">Listing description</h4>
+                                    <p class="metadata">Agent</p>
+                                    <p class="metadata">Location</p>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+        </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="massionette" role="tabpanel" aria-labelledby="massionette">
+          ...Massionettes
+          <div class="container content">
+             <div class="row">
+                <div class="col-sm-6 col-md-4 wrapper">
+                    <div class="text">
+
+                        <div class="">
+                            <div class="card article">
+                                <a href="#" target="_blank">
+                                    <img class="card-img-top" src="{{url_for('static',filename = 'images/4.jpg')}}" alt="Image of ">
+                                </a>
+                                <div class="card-body">
+                                    <h4 class="card-title">Listing description</h4>
+                                    <p class="metadata">Agent</p>
+                                    <p class="metadata">Location</p>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 wrapper">
+                    <div class="text">
+
+                        <div class="">
+                            <div class="card article">
+                                <a href="#" target="_blank">
+                                    <img class="card-img-top" src="{{url_for('static',filename = 'images/2.jpg')}}" alt="Image of ">
+                                </a>
+                                <div class="card-body">
+                                    <h4 class="card-title">Listing description</h4>
+                                    <p class="metadata">Agent</p>
+                                    <p class="metadata">Location</p>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 wrapper">
+                    <div class="text">
+
+                        <div class="">
+                            <div class="card article">
+                                <a href="#" target="_blank">
+                                    <img class="card-img-top" src="{{url_for('static',filename = 'images/1.jpg')}}" alt="Image of ">
+                                </a>
+                                <div class="card-body">
+                                    <h4 class="card-title">Listing description</h4>
+                                    <p class="metadata">Agent</p>
+                                    <p class="metadata">Location</p>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+        </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Actual Data -->
+
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="all-listings" role="tabpanel" aria-labelledby="all-listings">
+
+              <div class="container content">
+                  <div class="row">
+                     <h3 class="property">Featured Listings</h3>
+                    {{macro.displayListings(listing)}}
+                  </div>
+              </div>
+          </div>
+          <div class="tab-pane fade" id="apartments" role="tabpanel" aria-labelledby="apartments">
+
+              <div class="container content">
+                 <div class="row">
+                     <h3 class="property">Featured Apartments</h3>
+
+                      {{macro.displayListings(apartment)}}
+                 </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="bangalows" role="tabpanel" aria-labelledby="bangalows">
+
+              <div class="container content">
+                 <div class="row">
+                     <h3 class="property">Featured Bungalows</h3>
+
+                       {{macro.displayListings(bungalow)}}
+                 </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="massionette" role="tabpanel" aria-labelledby="massionette">
+
+              <div class="container content">
+                 <div class="row">
+                     <h3 class="property">Featured Massionettes</h3>
+
+                       {{macro.displayListings(massionette)}}
+                 </div>
+            </div>
+          </div>
+        </div>
+    <!-- End Actual Data -->
+
+
+
+
+
+</div>
+
+
+{% endblock %}

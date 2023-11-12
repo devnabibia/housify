@@ -1,0 +1,11 @@
+.DS_Store
+virtual/
+*.pyc
+.vscode/
+venv/
+.idea/
+
+venv/
+.idea/
+
+* __pycache__/

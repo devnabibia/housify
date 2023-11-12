@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+{% block navbar %}
+
+    {% include 'navbar2.html' %}
+
+{% endblock %}
+{% import 'bootstrap/wtf.html' as wtf%}
+{% block content %}
+
+
+
+<div class="top">
+
+</div>
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12 blog-form">
+                    <h3>List a Rental</h3>
+
+                    <form action="{{ url_for('main.listing')}}" method="post">
+                        <hr>
+                        <!-- <input type="date" id = "party-date"
+                        name="party-date" value="2018-06-12T19:30"
+                        min="2018-06-07T00:00" max="2018-06-14T00:00"/><br>
+                        <label for="party-time">start</label>
+
+                        <input type="time" id="party-time"
+                        name="party-time" value="2018-06-12T19:30"
+                        min="2018-06-07T00:00" max="2018-06-14T00:00" />
+
+                        <label for="party-time2">stop</label>
+                        <input type="time" id="party-time2"
+                        name="party-time2" value="2018-06-12T19:30"
+                        min="2018-06-07T00:00" max="2018-06-14T00:00" /> -->
+
+                        {{wtf.quick_form(list_form)}}
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+{% endblock%}
